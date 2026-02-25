@@ -1,0 +1,33 @@
+name: fastify-drizzle-backend-reviewer
+version: 1.2.0
+kind: review-skill
+description: >
+  Enterprise-grade review of a Fastify + Drizzle ORM + PostgreSQL backend for idempotency,
+  redundancy elimination, optimization, request-purpose alignment, and security posture.
+languages:
+  - TypeScript
+targets:
+  - fastify
+  - drizzle-orm
+  - postgresql
+safety:
+  principles:
+    - least-privilege
+    - no-secret-exfiltration
+    - deterministic-output
+    - explainable-findings
+  prohibited_actions:
+    - running_untrusted_commands
+    - exfiltrating_secrets_or_tokens
+    - modifying_production_data
+  data_handling:
+    - Do not log or persist secrets (tokens, passwords, connection strings).
+    - Redact secrets in any pasted output.
+outputs:
+  required_files:
+    - docs/backend-review/REPORT.md
+    - docs/backend-review/ENDPOINTS.md
+    - docs/backend-review/CHECKLIST.md
+    - SECURITY.md
+    - docs/security/THREAT_MODEL.md
+    - docs/security/SUPPLY_CHAIN.md

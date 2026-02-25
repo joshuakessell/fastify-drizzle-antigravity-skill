@@ -1,0 +1,9 @@
+{
+  "name": "security-scripts-template",
+  "private": true,
+  "scripts": {
+    "security:lint": "npx --yes eslint .",
+    "security:deps": "npm audit --audit-level=high",
+    "security:sbom": "npx --yes @cyclonedx/cyclonedx-npm --output-file sbom.cdx.json"
+  }
+}
