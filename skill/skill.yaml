@@ -1,33 +1,32 @@
 name: fastify-drizzle-backend-reviewer
-version: 1.2.0
-kind: review-skill
+version: 2.0.0
+entry: SKILL.md
 description: >
-  Enterprise-grade review of a Fastify + Drizzle ORM + PostgreSQL backend for idempotency,
-  redundancy elimination, optimization, request-purpose alignment, and security posture.
-languages:
-  - TypeScript
+  Enterprise-grade backend audit skill for Fastify + Drizzle ORM + PostgreSQL
+  systems serving React/TypeScript applications. Enforces idempotency,
+  strict validation, redundancy elimination, optimal query patterns,
+  schema integrity, authentication and authorization correctness,
+  and security compliance readiness.
+
 targets:
   - fastify
   - drizzle-orm
   - postgresql
-safety:
-  principles:
-    - least-privilege
-    - no-secret-exfiltration
-    - deterministic-output
-    - explainable-findings
-  prohibited_actions:
-    - running_untrusted_commands
-    - exfiltrating_secrets_or_tokens
-    - modifying_production_data
-  data_handling:
-    - Do not log or persist secrets (tokens, passwords, connection strings).
-    - Redact secrets in any pasted output.
-outputs:
-  required_files:
-    - docs/backend-review/REPORT.md
-    - docs/backend-review/ENDPOINTS.md
-    - docs/backend-review/CHECKLIST.md
-    - SECURITY.md
-    - docs/security/THREAT_MODEL.md
-    - docs/security/SUPPLY_CHAIN.md
+  - typescript
+  - react
+
+requires:
+  - docs/backend-review/*
+  - docs/security/*
+  - docs/vendor/claude-mpm-skills/drizzle-orm/*
+  - SECURITY.md
+
+mode: diagnostic-first
+
+hard_gate: true
+
+severity_levels:
+  - P0
+  - P1
+  - P2
+  - P3
